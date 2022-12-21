@@ -29,3 +29,16 @@ const questions = [
     }
 ]
 
+let markdown =
+`
+# ${response.projectTitle.toUpperCase()}
+${response.projectLink}
+## DESCRIPTION
+${response.projectShortDesc}
+## USAGE
+![Screenshot of the application.](./assets/img/screenshot.png)
+The application is used as follows:
+${response.projectUsage}
+## LICENSE
+This project is licensed under [${response.licenseName}](./LICENSE).
+`;
