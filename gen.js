@@ -42,3 +42,12 @@ ${response.projectUsage}
 ## LICENSE
 This project is licensed under [${response.licenseName}](./LICENSE).
 `;
+
+inquirer
+    .prompt(questions) // ask the questions
+    .then((response) => 
+        fs.writeFile('README.md', markdown, (err) =>
+            err ? console.error(err)
+            : console.log("README created.")
+        )
+    );
