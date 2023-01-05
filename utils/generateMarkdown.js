@@ -48,7 +48,8 @@ function renderLicenseSection(license) {
 function generateMarkdown(data) {
   return `
   # ${data.title}
-  [![License](!${renderLicenseBadge(data.license)})](${renderLicenseLink(data.license)})
+  
+  [![${data.license}](${renderLicenseBadge(data.license)})](${renderLicenseLink(data.license)})
 
   ## Table of Contents
   - [Description](#Description)
@@ -79,7 +80,8 @@ function generateMarkdown(data) {
 
   ## Further Questions
   Direct any further questions to one of the following:
-  [${data.email}](mailto:${data.email})\n
+  [${data.email}](mailto:${data.email})
+
   [https://github.com/${data.user}](https://github.com/${data.user})
 `
 };
