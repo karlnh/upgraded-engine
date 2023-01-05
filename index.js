@@ -1,8 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generator = require('./utils/generateMarkdown.js');
-
-console.log(generator);
+const generateMarkdown = require("./utils/generateMarkdown");
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -55,7 +53,7 @@ const questions = [
         name: 'license',
         type: 'list',
         message: 'Select a license:',
-        choices: ['license 1','license 2', 'license 3'],
+        choices: ['GNU GPLv3','MIT', 'Apache 2.0'],
     }
 ]
 
@@ -67,10 +65,12 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions)
-    .then((data) => {
-        console.log(data);
-        writeToFile("README.md",
-        generator.generateMarkdown(data))
+    .then((answers) => {
+        console.log(answers);
+        const output = generateMarkdown(answers);
+        console.log(output);
+        // writeToFile("README.md",
+        // generateMarkdown(answers))
     })
 }
 
