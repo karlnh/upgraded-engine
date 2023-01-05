@@ -7,7 +7,7 @@ function renderLicenseBadge(license) {
     case "MIT":
       return "https://img.shields.io/badge/License-MIT-yellow.svg";
     case "Apache 2.0":
-      return "https://img.shields.io/badge/License-Apache_2.0-blue.svg"
+      return "https://img.shields.io/badge/License-Apache_2.0-blue.svg";
     default:
       return "";
   }
@@ -23,7 +23,7 @@ function renderLicenseLink(license) {
     case "MIT":
       return "https://opensource.org/licenses/MIT";
     case "Apache 2.0":
-      return "https://opensource.org/licenses/Apache-2.0"
+      return "https://opensource.org/licenses/Apache-2.0";
     default:
       return "";
   }
@@ -32,14 +32,23 @@ function renderLicenseLink(license) {
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  return (license ? "license-section text" : "");
+  switch (license) {
+    case "GNU GPLv3":
+      return `This project is licensed under the GNU General Public License, version 3.`;
+    case "MIT":
+      return `This project is licensed under the The MIT License.`;
+    case "Apache 2.0":
+      return `This project is licensed under the Apache License 2.0.`;
+    default:
+      return "";
+  }
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `
   # ${data.title}
-  [![License](!${renderLicenseBadge(data.license)}](${renderLicenseLink(data.license)})
+  [![License](!${renderLicenseBadge(data.license)})](${renderLicenseLink(data.license)})
 
   ## Table of Contents
   - [Description](#Description)
@@ -66,11 +75,11 @@ function generateMarkdown(data) {
   ${data.testing}
 
   ## License
-  [![${data.license}](${renderLicenseLink(data.license)})](${renderLicenseSection(data.license)})
+  [This project is licensed under ${renderLicenseSection(data.license)}](${renderLicenseLink(data.license)})
 
   ## Further Questions
   Direct any further questions to one of the following:
-  [${data.email}](mmailto:${data.email})
+  [${data.email}](mailto:${data.email})\n
   [https://github.com/${data.user}](https://github.com/${data.user})
 `
 };
