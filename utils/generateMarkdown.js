@@ -1,19 +1,38 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  return (license ? "license-badge" : "");
+  switch (license) {
+    case "GNU GPLv3":
+      return "https://img.shields.io/badge/License-GPLv3-blue.svg";
+    case "MIT":
+      return "https://img.shields.io/badge/License-MIT-yellow.svg";
+    case "Apache 2.0":
+      return "https://img.shields.io/badge/License-Apache_2.0-blue.svg"
+    default:
+      return "";
+  }
+  // credit to https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  return (license ? "license-link" : "");
+  switch (license) {
+    case "GNU GPLv3":
+      return "https://www.gnu.org/licenses/gpl-3.0";
+    case "MIT":
+      return "https://opensource.org/licenses/MIT";
+    case "Apache 2.0":
+      return "https://opensource.org/licenses/Apache-2.0"
+    default:
+      return "";
+  }
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  return (license ? "license-section" : "");
+  return (license ? "license-section text" : "");
 }
 
 // TODO: Create a function to generate markdown for README
@@ -23,13 +42,13 @@ function generateMarkdown(data) {
   [![License](!${renderLicenseBadge(data.license)}](${renderLicenseLink(data.license)})
 
   ## Table of Contents
-  - [Description](#description)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Contribution Guidelines](#contributing)
-  - [Testing Instructions](#testing)
-  - [License](#license)
-  - [Further Questions](#contact)
+  - [Description](#Description)
+  - [Installation](#Installation)
+  - [Usage](#Usage)
+  - [Contribution](#Contribution)
+  - [Testing](#Testing)
+  - [License](#License)
+  - [Contact](#Contact)
   
   ## Description
   ${data.desc}
